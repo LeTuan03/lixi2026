@@ -1,5 +1,5 @@
 {
-  "name": "li-xi",
+  "name": "lì-xì-ai-nhí-nhảnh",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,13 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@google/genai": "^1.41.0",
     "lucide-react": "^0.563.0",
     "react": "^19.2.4",
+    "@google/genai": "^1.41.0",
     "react-dom": "^19.2.4"
   },
   "devDependencies": {
-    "@rollup/rollup-win32-x64-msvc": "^4.57.1",
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
     "typescript": "~5.8.2",
