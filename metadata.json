@@ -1,0 +1,7 @@
+{
+  "name": "Lì Xì • tuandev",
+  "description": "Một ứng dụng vui nhộn để trao và nhận lì xì ảo với những lời chúc độc đáo.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

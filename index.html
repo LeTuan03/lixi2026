@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lì Xì • tuandev</title>
+    <link rel="shortcut icon" href="favicon.jpg" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Nunito', 'sans-serif'],
+              display: ['Coiny', 'cursive'],
+            },
+            colors: {
+              tet: {
+                red: '#D90429',
+                darkRed: '#8D0801',
+                gold: '#FFD700',
+                yellow: '#FFC300',
+                cream: '#FEFAE0'
+              }
+            },
+            animation: {
+              'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+              'pop': 'pop 0.3s ease-out forwards',
+              'float': 'float 3s ease-in-out infinite',
+            },
+            keyframes: {
+              shake: {
+                '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+                '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
+                '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
+                '40%, 60%': { transform: 'translate3d(4px, 0, 0)' }
+              },
+              pop: {
+                '0%': { transform: 'scale(0.8)', opacity: '0' },
+                '100%': { transform: 'scale(1)', opacity: '1' }
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        background-color: #FEFAE0;
+        background-image: radial-gradient(#FFD700 1px, transparent 1px);
+        background-size: 20px 20px;
+        overflow-x: hidden;
+      }
+      #reader {
+        width: 100%;
+        border-radius: 1rem;
+        overflow: hidden;
+      }
+      #reader video {
+        object-fit: cover;
+        border-radius: 1rem;
+      }
+      
+      /* Falling Petals Animations */
+      .petal {
+        position: fixed;
+        top: -10vh;
+        z-index: 0;
+        user-select: none;
+        pointer-events: none;
+        animation-name: fall, sway;
+        animation-timing-function: linear, ease-in-out;
+        animation-iteration-count: infinite, infinite;
+      }
+
+      @keyframes fall {
+        0% { top: -10vh; opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { top: 110vh; opacity: 0; }
+      }
+
+      @keyframes sway {
+        0% { transform: translateX(0px) rotate(0deg); }
+        25% { transform: translateX(30px) rotate(45deg); }
+        50% { transform: translateX(0px) rotate(90deg); }
+        75% { transform: translateX(-30px) rotate(135deg); }
+        100% { transform: translateX(0px) rotate(180deg); }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
