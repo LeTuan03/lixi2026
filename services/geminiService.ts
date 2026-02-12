@@ -1,7 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
 import { ToneType } from "../types";
 
-let ai: any = null;
+let ai: any = new GoogleGenAI({ apiKey: process.env.API_KEY });
 // Only instantiate the server-side client when not running in a browser.
 // Creating the client in the browser will throw if an API key isn't present
 // (and exposing an API key in frontend code is insecure). Keep `ai` null
