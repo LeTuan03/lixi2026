@@ -1,7 +1,14 @@
 import { GoogleGenAI } from "@google/genai";
 import { ToneType } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+let ai: any = null;
+// Only instantiate the server-side client when not running in a browser.
+// Creating the client in the browser will throw if an API key isn't present
+// (and exposing an API key in frontend code is insecure). Keep `ai` null
+// in the browser so functions can return safe fallbacks instead of crashing.
+if (typeof window === "undefined" && process.env.API_KEY) {
+  ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+}
 
 export const generateLixiWish = async (
   recipient: string,
@@ -22,6 +29,11 @@ export const generateLixiWish = async (
       - Output chỉ là nội dung lời chúc, không cần dẫn dắt.
     `;
 
+    if (!ai) {
+      console.warn("AI client unavailable in browser — returning fallback wish.");
+      return "Chúc mừng năm mới! Vạn sự như ý!";
+    }
+
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
@@ -41,6 +53,11 @@ export const generateRandomFortune = async (): Promise<string> => {
       Ngắn gọn, hài hước, tích cực. Dưới 30 từ.
       Ví dụ: "Năm nay tình tiền đều đỏ, cẩn thận chó rượt."
     `;
+
+    if (!ai) {
+      console.warn("AI client unavailable in browser — returning fallback fortune.");
+      return "Tiền vào như nước sông Đà, tiền ra nhỏ giọt như cà phê phin.";
+    }
 
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
